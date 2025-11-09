@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://on71uouydfpp"]
+[gd_scene load_steps=7 format=3 uid="uid://on71uouydfpp"]
 
 [ext_resource type="Script" uid="uid://7j48tkldkqxv" path="res://scripts/game.gd" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://dx3rkvipb60oi" path="res://assets/img/bluepos.png.webp" id="2_yqjtg"]
@@ -7,12 +7,15 @@
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_80nbo"]
 
+[sub_resource type="Theme" id="Theme_lbhrr"]
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_80nbo")
 
 [node name="TimeLabel" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
 text = "Time: 30"
 
 [node name="TopPotions" type="Control" parent="."]
@@ -36,21 +39,30 @@ texture = SubResource("CompressedTexture2D_80nbo")
 texture = SubResource("CompressedTexture2D_80nbo")
 
 [node name="Buttons" type="HBoxContainer" parent="."]
-offset_left = 200.0
-offset_top = 500.0
-offset_right = 748.0
-offset_bottom = 656.0
+offset_left = 325.0
+offset_top = 450.0
+offset_right = 873.0
+offset_bottom = 606.0
+theme = SubResource("Theme_lbhrr")
 
 [node name="potion1button" type="Button" parent="Buttons"]
 layout_mode = 2
 icon = ExtResource("2_yqjtg")
+icon_alignment = 1
+expand_icon = true
 
 [node name="potion2button" type="Button" parent="Buttons"]
 layout_mode = 2
 icon = ExtResource("3_lnu2h")
+icon_alignment = 1
+expand_icon = true
 
 [node name="potion3button" type="Button" parent="Buttons"]
 layout_mode = 2
 icon = ExtResource("4_lbhrr")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="pressed" from="Buttons/potion1button" to="." method="_on_potion_1_button_pressed"]

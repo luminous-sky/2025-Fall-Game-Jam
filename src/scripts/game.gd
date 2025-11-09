@@ -3,6 +3,7 @@ extends Node2D
 @onready var timerText = $TimeLabel
 @onready var topRow = $TopPotions
 @onready var potionButtons = $Buttons
+@onready var music = $MusicPlayer
 
 var potionNames = ["bluePotion", "pinkPotion", "purplePotion"]
 var potionPics = {
@@ -12,7 +13,7 @@ var potionPics = {
 }
 
 var recipeOrder = []
-var secondsLeft = 20.0
+var secondsLeft = 60.0
 var isPlaying = false
 var recipeCard
 var recipeTitle
@@ -20,15 +21,27 @@ var recipeTitle
 var retryButton
 
 var roundCount = 0
-var totalRounds = 5
+var totalRounds = 10
 
 func _ready():
+	var bg = Sprite2D.new()
+	bg.texture = preload("res://assets/img/potionsbg.png.webp")
+	bg.position = get_viewport_rect().size / 2
+	bg.scale = get_viewport_rect().size / bg.texture.get_size()
+	add_child(bg)
+	move_child(bg, 0)
+	
 	randomize()
 	makeRecipeCard()
 	makePotionButtons()
 	makeRetryButton()
 	startGameNow()
 	set_process(true)
+	
+	music.stream = preload("res://assets/potionsss.ogg")
+	music.play()
+	music.volume_db = -5
+	music.stream.loop = true
 
 func _process(t):
 	runGameLoop(t)
@@ -46,13 +59,13 @@ func runGameLoop(t):
 func makeRecipeCard():
 	var screenWidth = get_viewport_rect().size.x
 	recipeCard = ColorRect.new()
-	recipeCard.color = Color(0.6, 0.5, 1.0, 0.8)
-	recipeCard.size.x = 700
+	recipeCard.color = Color(0.961, 0.855, 0.948, 0.8)
+	recipeCard.size.x = 600
 	recipeCard.size.y = 150
 	recipeCard.position.x = (screenWidth - recipeCard.size.x) / 2
-	recipeCard.position.y = 70
+	recipeCard.position.y = 15
 	add_child(recipeCard)
-	move_child(recipeCard, 0)
+	move_child(recipeCard, 1)
 
 	recipeTitle = Label.new()
 	recipeTitle.text = "Potion Recipe"
@@ -68,11 +81,13 @@ func makePotionButtons():
 	var spacing = 150
 	var totalWidth = spacing * (count - 1)
 	var startX = (screenWidth - totalWidth) / 2
-	var y = 600
+	var y = 350
 	for i in range(potionButtons.get_child_count()):
 		var btn = potionButtons.get_child(i)
+		
+
 		btn.position.x = startX + i * spacing
-		btn.position.y = y
+		btn.position.y = 350
 		btn.visible = i < 3
 		btn.disabled = false
 		btn.custom_minimum_size = Vector2(160, 160)
@@ -90,10 +105,10 @@ func makeRetryButton():
 	retryButton.pressed.connect(onRetryClicked)
 
 func startGameNow():
-	secondsLeft = 20.0
+	secondsLeft = 60.0
 	roundCount = 0
 	isPlaying = true
-	timerText.text = "Time Left: 20s"
+	timerText.text = "Time Left: 60s"
 	makePotionOrder()
 	showRecipePotions()
 	showPotionButtons()
@@ -120,6 +135,8 @@ func showRecipePotions():
 			pot.position.x = startX + spacing * i
 			pot.position.y = y
 			pot.visible = true
+			
+			pot.scale = Vector2(1.75, 1.75)
 		else:
 			pot.visible = false
 
@@ -128,6 +145,7 @@ func showPotionButtons():
 		var btn = potionButtons.get_child(i)
 		var potionType = potionNames[i]
 		var pic = potionPics[potionType]
+		
 		if btn is TextureButton:
 			btn.normal_texture = pic
 			btn.hover_texture = pic
@@ -149,6 +167,7 @@ func onPotionClicked(i):
 			showRecipePotions()
 		else:
 			endTheGame(true)
+
 
 func endTheGame(win):
 	isPlaying = false
