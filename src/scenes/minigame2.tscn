@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://chndrcxl56m26"]
 
 [ext_resource type="Script" uid="uid://bdxjiuabgbca4" path="res://scripts/minigame2.gd" id="1_y0rby"]
-[ext_resource type="AudioStream" uid="uid://bgalvw4eghu3w" path="res://assets/audio/falling_stars.ogg" id="2_jk64j"]
+[ext_resource type="AudioStream" uid="uid://bgalvw4eghu3w" path="res://assets/audio/bgm/falling_stars.ogg" id="2_jk64j"]
 [ext_resource type="Texture2D" uid="uid://dtgst8ahegxt5" path="res://assets/img/tiles.png" id="2_lhedx"]
 [ext_resource type="Texture2D" uid="uid://di387skstpt6c" path="res://assets/img/falling_stars_bg.png" id="2_qdnvj"]
 [ext_resource type="PackedScene" uid="uid://chpkb0v4ng5id" path="res://scenes/star.tscn" id="3_jk64j"]
