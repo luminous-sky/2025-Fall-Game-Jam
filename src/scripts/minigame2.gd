@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var win_time: float = 19.0 
+@export var win_time: float = 30.0 
 
 var time_left: float = win_time
 var lastPoint = 0
@@ -8,8 +8,11 @@ var lastPoint = 0
 @onready var star = preload("res://scenes/star.tscn")
 @onready var spawn_points = $SpawnPoints.get_children()
 
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
+
 
 func _ready() -> void:
+	music_player.play()
 	$SpawnTimer.wait_time = .3
 	$SpawnTimer.start()
 	$SpawnTimer.timeout.connect(_on_spawn_timer_timeout) # Replace with function body.
@@ -17,11 +20,11 @@ func _ready() -> void:
 
 func _on_spawn_timer_timeout():
 	var point = randi() % 10
-	var star = star.instantiate()
+	var new_star = star.instantiate()
 	while(point == lastPoint):
 		point = randi() % 10
-	star.position = spawn_points[point].global_position
-	add_child(star) 
+	new_star.position = spawn_points[point].global_position
+	add_child(new_star) 
 	lastPoint = point
 
 
