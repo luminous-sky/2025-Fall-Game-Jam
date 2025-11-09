@@ -5,6 +5,7 @@ extends Player
 const JUMP_VELOCITY = -400.0
 
 var is_dead := false
+var last_direction := "left"
 
 
 func _init() -> void:
@@ -28,14 +29,13 @@ func _physics_process(delta: float) -> void:
 		
 		if horizontal < 0:
 			animated_sprite_2d.play("left")
+			last_direction = "left"
 		else:
 			animated_sprite_2d.play("right")
+			last_direction = "right"
 	else:
 		velocity.x = 0
-	
-	# Diagonal movement should be normalized
-	if velocity.x != 0 and velocity.y != 0:
-		velocity = velocity.normalized() * SPEED
+		animated_sprite_2d.play("idle_" + last_direction)
 	
 	# Move the player
 	move_and_slide()

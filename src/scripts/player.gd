@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var SPEED: float = 80.0
 var can_move := true
 
+var previous_animation := "down"
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
@@ -23,8 +25,10 @@ func _physics_process(_delta: float) -> void:
 		
 		if vertical < 0:
 			animated_sprite_2d.play("up")
+			previous_animation = "up"
 		else:
 			animated_sprite_2d.play("down")
+			previous_animation = "down"
 	else:
 		velocity.y = 0
 	
@@ -34,10 +38,15 @@ func _physics_process(_delta: float) -> void:
 		
 		if horizontal < 0:
 			animated_sprite_2d.play("left")
+			previous_animation = "left"
 		else:
 			animated_sprite_2d.play("right")
+			previous_animation = "right"
 	else:
 		velocity.x = 0
+	
+	if velocity.x == 0 and velocity.y == 0:
+		animated_sprite_2d.play("idle_" + previous_animation)
 	
 	# Diagonal movement should be normalized
 	if velocity.x != 0 and velocity.y != 0:
