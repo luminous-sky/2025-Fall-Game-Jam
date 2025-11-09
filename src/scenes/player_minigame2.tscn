@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://baevpgk7qx4at"]
 
 [ext_resource type="PackedScene" uid="uid://bbkvicnx6hvx" path="res://scenes/player.tscn" id="1_f0ql8"]
-[ext_resource type="Script" uid="uid://ba7fy8y13hynf" path="res://player_minigame2.gd" id="2_e7fif"]
+[ext_resource type="Script" uid="uid://ba7fy8y13hynf" path="res://scripts/player_minigame2.gd" id="2_e7fif"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0ql8"]
 size = Vector2(31, 55)

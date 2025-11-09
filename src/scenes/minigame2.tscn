@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=4 uid="uid://chndrcxl56m26"]
+[gd_scene load_steps=10 format=4 uid="uid://chndrcxl56m26"]
 
 [ext_resource type="Script" uid="uid://bdxjiuabgbca4" path="res://scripts/minigame2.gd" id="1_y0rby"]
+[ext_resource type="AudioStream" uid="uid://bgalvw4eghu3w" path="res://assets/audio/falling_stars.ogg" id="2_jk64j"]
 [ext_resource type="Texture2D" uid="uid://dtgst8ahegxt5" path="res://assets/img/tiles.png" id="2_lhedx"]
 [ext_resource type="PackedScene" uid="uid://chpkb0v4ng5id" path="res://scenes/star.tscn" id="3_jk64j"]
 [ext_resource type="PackedScene" uid="uid://baevpgk7qx4at" path="res://scenes/player_minigame2.tscn" id="4_y0rby"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jk64j"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y0rby"]
 texture = ExtResource("2_lhedx")
 4:0/size_in_atlas = Vector2i(2, 2)
 4:0/0 = 0
@@ -13,10 +14,20 @@ texture = ExtResource("2_lhedx")
 [sub_resource type="TileSet" id="TileSet_272bh"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_jk64j")
+sources/1 = SubResource("TileSetAtlasSource_y0rby")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lhedx"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jk64j"]
+normal = Vector2(-1, 0)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_y0rby")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jk64j")
+autoplay = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -80,5 +91,16 @@ theme_override_font_sizes/font_size = 25
 position = Vector2(426.00003, 465)
 scale = Vector2(3, 3)
 SPEED = 300.0
+
+[node name="LeftWall" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("WorldBoundaryShape2D_lhedx")
+
+[node name="RightWall" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(1150, 0)
+shape = SubResource("WorldBoundaryShape2D_jk64j")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
