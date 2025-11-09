@@ -1,11 +1,12 @@
 extends Node2D
 @onready var star = preload("res://scenes/star.tscn")
 @onready var spawn_points = $SpawnPoints.get_children()
-@export var win_time: float = 19.0 
+@export var win_time: float = 30.0 
 var time_left: float = win_time
 var lastPoint = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$MusicPlayer.play()
 	$SpawnTimer.wait_time = .3
 	$SpawnTimer.start()
 	$SpawnTimer.timeout.connect(_on_spawn_timer_timeout) # Replace with function body.

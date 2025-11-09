@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://chndrcxl56m26"]
+[gd_scene load_steps=10 format=4 uid="uid://chndrcxl56m26"]
 
 [ext_resource type="Script" uid="uid://bdxjiuabgbca4" path="res://scripts/minigame1.gd" id="1_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://d072oou7v8m6r" path="res://assets/tilemap.png" id="3_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://vislyrog2ecb" path="res://scenes/MC.tscn" id="4_tipki"]
 [ext_resource type="PackedScene" uid="uid://chpkb0v4ng5id" path="res://scenes/star.tscn" id="5_85g3d"]
+[ext_resource type="AudioStream" uid="uid://cerglpa3rurre" path="res://UntitledOct252025407PM.mp3" id="6_o6xl0"]
 [ext_resource type="Script" uid="uid://cpntc865eguwy" path="res://scripts/timer_label.gd" id="6_tefeu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
@@ -48,6 +49,20 @@ texture = ExtResource("3_o6xl0")
 [sub_resource type="TileSet" id="TileSet_272bh"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7mycd")
+
+[sub_resource type="GDScript" id="GDScript_tefeu"]
+script/source = "extends AudioStreamPlayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	play()# Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_tbgi4")
@@ -102,7 +117,7 @@ position = Vector2(1024, 23)
 position = Vector2(1130, 21)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 21.0
+wait_time = 30.0
 one_shot = true
 autostart = true
 
@@ -113,5 +128,10 @@ offset_right = 204.0
 offset_bottom = 613.0
 theme_override_font_sizes/font_size = 25
 script = ExtResource("6_tefeu")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_o6xl0")
+autoplay = true
+script = SubResource("GDScript_tefeu")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
