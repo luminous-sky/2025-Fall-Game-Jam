@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://chndrcxl56m26"]
+[gd_scene load_steps=11 format=4 uid="uid://chndrcxl56m26"]
 
 [ext_resource type="Script" uid="uid://bdxjiuabgbca4" path="res://scripts/minigame2.gd" id="1_y0rby"]
 [ext_resource type="AudioStream" uid="uid://bgalvw4eghu3w" path="res://assets/audio/falling_stars.ogg" id="2_jk64j"]
 [ext_resource type="Texture2D" uid="uid://dtgst8ahegxt5" path="res://assets/img/tiles.png" id="2_lhedx"]
+[ext_resource type="Texture2D" uid="uid://di387skstpt6c" path="res://assets/img/falling_stars_bg.png" id="2_qdnvj"]
 [ext_resource type="PackedScene" uid="uid://chpkb0v4ng5id" path="res://scenes/star.tscn" id="3_jk64j"]
 [ext_resource type="PackedScene" uid="uid://baevpgk7qx4at" path="res://scenes/player_minigame2.tscn" id="4_y0rby"]
 
@@ -11,13 +12,13 @@ texture = ExtResource("2_lhedx")
 texture_region_size = Vector2i(50, 50)
 7:0/0 = 0
 8:0/0 = 0
-6:1/0 = 0
 7:1/0 = 0
 8:1/0 = 0
 8:2/0 = 0
 7:2/0 = 0
 6:2/0 = 0
 6:0/0 = 0
+6:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_272bh"]
 tile_size = Vector2i(10, 10)
@@ -38,6 +39,7 @@ stream = ExtResource("2_jk64j")
 autoplay = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = 1
 texture_filter = 1
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAAHAA4AAQAHAAAAAAAMAA4AAQAHAAAAAAARAA4AAQAHAAAAAAAWAA4AAQAHAAAAAAAbAA4AAQAIAAAAAAACAA4AAQAHAAAAAAD9/w4AAQAGAAAAAAACABMAAQAHAAEAAAAHABMAAQAHAAEAAAAMABMAAQAHAAEAAAARABMAAQAHAAEAAAAWABMAAQAHAAEAAAAbABMAAQAIAAEAAAD9/xMAAQAGAAEAAAA=")
@@ -110,5 +112,18 @@ shape = SubResource("WorldBoundaryShape2D_lhedx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
 position = Vector2(1150, 0)
 shape = SubResource("WorldBoundaryShape2D_jk64j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qdnvj")
+expand_mode = 2
+stretch_mode = 4
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
