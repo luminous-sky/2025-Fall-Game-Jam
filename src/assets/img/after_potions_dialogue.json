@@ -1,0 +1,37 @@
+{
+	"contents": [
+		{
+			"TEXTURE": "normal_full.png",
+			"NAME": "[color=#4386c2]Akimi[/color]",
+			"DIALOGUE": "Oh... wow! Huh? Am I a magical girl now?"
+		},
+		{
+			"TEXTURE": null,
+			"NAME": "[color=#24ccff]Miku[/color]",
+			"DIALOGUE": "Congratulations! Now that you're a magical girl, you can make money by completing tasks with your magic! "
+		},
+		{
+			"TEXTURE": "normal_full.png",
+			"NAME": "[color=#4386c2]Akimi[/color]",
+			"DIALOGUE": "So what should I do next?\nI'm a bit confused, since, you know...."
+		},
+		{
+			"TEXTURE": null,
+			"NAME": "[color=#24ccff]Miku[/color]",
+			"DIALOGUE": "Of course. There's going to be a star shower in the forest soon! They'll corrupt the forest with their impure energy if left alone. That would be dangerous."
+		},
+		{
+			"TEXTURE": "normal_full.png",
+			"NAME": "[color=#4386c2]Akimi[/color]",
+			"DIALOGUE": "So what should I do?"
+		},
+		{
+			"TEXTURE": null,
+			"NAME": "[color=#24ccff]Miku[/color]",
+			"DIALOGUE": "These stars are pretty weak, so getting close to them is enough for your pure energy to take care of them."
+		},
+		{
+			"DIALOGUE": "You'll have to enter the shower, but be careful and [i]dodge the stars[/i] while you're in there. You'll be running [i]left and right[/i].. good luck!"
+		}
+	]
+}

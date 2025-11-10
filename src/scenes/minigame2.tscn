@@ -91,11 +91,13 @@ one_shot = true
 autostart = true
 
 [node name="TimerLabel" type="Label" parent="."]
+z_index = 3
 offset_left = 26.0
 offset_top = 537.0
 offset_right = 204.0
 offset_bottom = 613.0
 theme_override_font_sizes/font_size = 25
+text = "Timer"
 
 [node name="Player" parent="." instance=ExtResource("4_y0rby")]
 position = Vector2(420.00003, 453)
@@ -114,7 +116,7 @@ position = Vector2(1150, 0)
 shape = SubResource("WorldBoundaryShape2D_jk64j")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
+layer = -2
 
 [node name="Background" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15

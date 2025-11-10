@@ -1,0 +1,19 @@
+{
+	"contents": [
+		{
+			"TEXTURE": null,
+			"NAME": "",
+			"DIALOGUE": "*KACHING*"
+		},
+		{
+			"TEXTURE": "normal_full.png",
+			"NAME": "[color=#4386c2]Akimi[/color]",
+			"DIALOGUE": "YAY! I have enough money for the concert! Thank you so much Miku!"
+		},
+		{
+			"TEXTURE": null,
+			"NAME": "[color=#24ccff]Miku[/color]",
+			"DIALOGUE": "No problem, I'm glad to be able to help you! See you there!"
+		}
+	]
+}

@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://3snb4odcvvbu"]
+[gd_scene load_steps=3 format=3 uid="uid://3snb4odcvvbu"]
+
+[ext_resource type="Script" uid="uid://dtm8px2wq1ya4" path="res://scenes/win_scene.gd" id="1_aw8vk"]
+[ext_resource type="PackedScene" uid="uid://n5t1t45l273n" path="res://scenes/data_manager.tscn" id="2_ecqtd"]
 
 [node name="WinScene" type="Control"]
 layout_mode = 3
@@ -9,6 +12,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_aw8vk")
+
+[node name="DataManager" parent="." instance=ExtResource("2_ecqtd")]
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

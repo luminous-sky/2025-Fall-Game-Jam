@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfu8dn6gbu2u1"]
+
+[ext_resource type="Texture2D" uid="uid://di387skstpt6c" path="res://assets/img/falling_stars_bg.png" id="1_0bpdh"]
+[ext_resource type="AudioStream" uid="uid://b7xa50mhhxqq0" path="res://assets/audio/bgm/transition_audio1.ogg" id="1_8gwij"]
+[ext_resource type="Texture2D" uid="uid://bh2k6trfvr5xg" path="res://assets/img/dialogue_box.png" id="2_0ctdu"]
+[ext_resource type="SystemFont" uid="uid://dy4i8g3aql6l7" path="res://assets/fonts/dialogue_box_normal.tres" id="3_2fbfq"]
+[ext_resource type="Texture2D" uid="uid://buapbffc5wu56" path="res://assets/img/miku_whiteboard.png" id="4_2fbfq"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_8gwij")
+autoplay = true
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0bpdh")
+expand_mode = 3
+
+[node name="Background2" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(0, 115)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = -202.0
+offset_right = 322.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0ctdu")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="InnerMargins" type="MarginContainer" parent="Background2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background2/InnerMargins"]
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Background2/InnerMargins/HBoxContainer"]
+custom_minimum_size = Vector2(430, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_2fbfq")
+theme_override_font_sizes/normal_font_size = 20
+text = "Thank you for playing!
+
+This game was really fun to create, and a lot was learned in the process of making the game!
+
+We really hope that you enjoyed the game!"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Background2/InnerMargins/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_2fbfq")
+expand_mode = 3

@@ -1,8 +1,11 @@
-[gd_scene load_steps=18 format=4 uid="uid://doayh528xhbvm"]
+[gd_scene load_steps=21 format=4 uid="uid://doayh528xhbvm"]
 
 [ext_resource type="PackedScene" uid="uid://n5t1t45l273n" path="res://scenes/data_manager.tscn" id="1_litfj"]
+[ext_resource type="Script" uid="uid://b6ncsce7wg2f4" path="res://scripts/intro_cutscene_forest.gd" id="1_q4xhu"]
 [ext_resource type="AudioStream" uid="uid://be0nuvxfjy7eq" path="res://assets/audio/bgm/bg_1.ogg" id="1_rsgco"]
+[ext_resource type="JSON" path="res://assets/dialogue/forest_dialogue.json" id="2_a8xpg"]
 [ext_resource type="Texture2D" uid="uid://dtgst8ahegxt5" path="res://assets/img/tiles.png" id="2_rsgco"]
+[ext_resource type="PackedScene" uid="uid://coxxmwsayyd7s" path="res://scenes/transition_screen.tscn" id="3_a8xpg"]
 [ext_resource type="Script" uid="uid://b7c0642t3cu" path="res://scripts/spawn_locations.gd" id="3_johub"]
 [ext_resource type="PackedScene" uid="uid://bbkvicnx6hvx" path="res://scenes/player.tscn" id="4_q4xhu"]
 [ext_resource type="PackedScene" uid="uid://dsyi0ewb6pf0q" path="res://scenes/dialogue.tscn" id="5_a8xpg"]
@@ -63,10 +66,19 @@ normal = Vector2(0, 1)
 size = Vector2(66, 42)
 
 [node name="Base" type="Node2D"]
+script = ExtResource("1_q4xhu")
+cutscene_dialogue = ExtResource("2_a8xpg")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_rsgco")
 autoplay = true
+
+[node name="TransitionScreen" parent="." instance=ExtResource("3_a8xpg")]
+z_index = 7
+offset_left = -387.0
+offset_top = -204.0
+offset_right = 1427.0
+offset_bottom = 949.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -162,3 +174,5 @@ position = Vector2(0, 19)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableObject/Area2D"]
 shape = SubResource("RectangleShape2D_pu3yx")
+
+[connection signal="transition_ended" from="TransitionScreen" to="." method="_on_transition_screen_transition_ended"]

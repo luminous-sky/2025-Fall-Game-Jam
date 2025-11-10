@@ -1,10 +1,5 @@
 extends Node2D
 
-@onready var timerText = $TimeLabel
-@onready var topRow = $TopPotions
-@onready var potionButtons = $Buttons
-@onready var music = $MusicPlayer
-
 var potionNames = ["bluePotion", "pinkPotion", "purplePotion"]
 var potionPics = {
 	"bluePotion": preload("res://assets/img/bluepos.png.webp"),
@@ -23,6 +18,14 @@ var retryButton
 var roundCount = 0
 var totalRounds = 10
 
+@onready var data_manager: DataManager = $DataManager
+
+@onready var timerText = $TimeLabel
+@onready var topRow = $TopPotions
+@onready var potionButtons = $Buttons
+@onready var music = $MusicPlayer
+
+
 func _ready():
 	var bg = Sprite2D.new()
 	bg.texture = preload("res://assets/img/potionsbg.png.webp")
@@ -38,13 +41,15 @@ func _ready():
 	startGameNow()
 	set_process(true)
 	
-	music.stream = preload("res://assets/potionsss.ogg")
+	music.stream = preload("res://assets/audio/bgm/potionsss.ogg")
 	music.play()
 	music.volume_db = -5
 	music.stream.loop = true
 
+
 func _process(t):
 	runGameLoop(t)
+
 
 func runGameLoop(t):
 	if isPlaying:
@@ -55,6 +60,7 @@ func runGameLoop(t):
 		timerText.text = "Time Left: " + str(int(secondsLeft)) + "s"
 		if secondsLeft <= 0:
 			endTheGame(false)
+
 
 func makeRecipeCard():
 	var screenWidth = get_viewport_rect().size.x
@@ -75,6 +81,7 @@ func makeRecipeCard():
 	recipeTitle.position.y = -10
 	recipeCard.add_child(recipeTitle)
 
+
 func makePotionButtons():
 	var screenWidth = get_viewport_rect().size.x
 	var count = 3
@@ -94,6 +101,7 @@ func makePotionButtons():
 		if not btn.pressed.is_connected(onPotionClicked):
 			btn.pressed.connect(onPotionClicked.bind(i))
 
+
 func makeRetryButton():
 	retryButton = Button.new()
 	retryButton.text = "Try Again"
@@ -103,6 +111,7 @@ func makeRetryButton():
 	retryButton.size.y = 100
 	add_child(retryButton)
 	retryButton.pressed.connect(onRetryClicked)
+
 
 func startGameNow():
 	secondsLeft = 60.0
@@ -117,11 +126,13 @@ func startGameNow():
 	potionButtons.visible = true
 	retryButton.visible = false
 
+
 func makePotionOrder():
 	recipeOrder = []
 	for i in range(totalRounds):
 		var pick = randi() % potionNames.size()
 		recipeOrder = recipeOrder + [potionNames[pick]]
+
 
 func showRecipePotions():
 	var y = recipeCard.position.y + (recipeCard.size.y / 2)
@@ -140,6 +151,7 @@ func showRecipePotions():
 		else:
 			pot.visible = false
 
+
 func showPotionButtons():
 	for i in range(3):
 		var btn = potionButtons.get_child(i)
@@ -153,6 +165,7 @@ func showPotionButtons():
 			btn.disabled_texture = pic
 		btn.visible = true
 		btn.disabled = false
+
 
 func onPotionClicked(i):
 	if i < 0 or i >= potionNames.size():
@@ -173,6 +186,18 @@ func endTheGame(win):
 	isPlaying = false
 	if win:
 		timerText.text = "You win!"
+		
+		# Update data
+		var data := data_manager.load_data(DataKeys.TEMPLATE_DATA)
+		data[DataKeys.PROGRESS_KEY] = DataKeys.MINIGAME_ONE_VALUE
+		
+		data_manager.save_data(data, true)
+		
+		# Wait some time
+		await get_tree().create_timer(2.0).timeout
+		
+		get_tree().change_scene_to_file("res://scenes/cave_scene.tscn")
+		
 	else:
 		timerText.text = "Time's up! You lost!"
 		recipeCard.visible = false
@@ -181,6 +206,7 @@ func endTheGame(win):
 		retryButton.position.x = (get_viewport_rect().size.x - retryButton.size.x) / 2
 		retryButton.position.y = (get_viewport_rect().size.y - retryButton.size.y) / 2
 		retryButton.visible = true
+
 
 func onRetryClicked():
 	startGameNow()

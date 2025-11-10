@@ -1,7 +1,7 @@
 {
 	"contents": [
 		{
-			"TEXTURE": "icon.svg",
+			"TEXTURE": "normal_full.png",
 			"NAME": "[color=#4386c2]Akimi[/color]",
 			"DIALOGUE": "What a long night...\nI'm so tired."
 		},
@@ -14,7 +14,7 @@
 			"DIALOGUE": "*MIKU CONCERT - Tickets for the next Miku concert on 3/9 are now available for purchase!*"
 		},
 		{
-			"TEXTURE": "icon.svg",
+			"TEXTURE": "normal_full.png",
 			"NAME": "[color=#4386c2]Akimi[/color]",
 			"DIALOGUE": "Miku!"
 		},
@@ -29,6 +29,16 @@
 		},
 		{
 			"DIALOGUE": "Ugh, all of these sound awful. If only I could be a magical girl or something instead of these boring 9 to 5 j*bs...."
+		},
+		{
+			"TEXTURE": null,
+			"NAME": "",
+			"DIALOGUE": "*MAGICAL SPARKLES OUTSIDE*"
+		},
+		{
+			"TEXTURE": "normal_full.png",
+			"NAME": "[color=#4386c2]Akimi[/color]",
+			"DIALOGUE": "Oh wait, I should check that out...."
 		}
 	]
 }

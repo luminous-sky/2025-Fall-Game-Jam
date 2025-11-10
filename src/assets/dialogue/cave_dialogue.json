@@ -1,0 +1,45 @@
+{
+	"contents": [
+		{
+			"TEXTURE": null,
+			"NAME": "[color=#4386c2]Akimi[/color]",
+			"DIALOGUE": "*AKIMI FOLLOWS THE SOUND*"
+		},
+		{
+			"NAME": "[color=#24ccff]Miku[/color]",
+			"DIALOGUE": "So you want to be a magical girl?"
+		},
+		{
+			"TEXTURE": "normal_full.png",
+			"NAME": "[color=#4386c2]Akimi[/color]",
+			"DIALOGUE": "Miku!!! Why are you here?"
+		},
+		{
+			"TEXTURE": null,
+			"NAME": "[color=#24ccff]Miku[/color]",
+			"DIALOGUE": "To be a magical girl, you need mana first!"
+		},
+		{
+			"DIALOGUE": "Here, let me explain."
+		},
+		{
+			"DIALOGUE": "First, I'll give you a recipe for a potion at the top!\nThen, use your chemicals at the bottom to follow the recipe and get mana!"
+		},
+		{
+			"DIALOGUE": "You'll need to repeat this in order to get enough mana."
+		},
+		{
+			"DIALOGUE": "Don't take too long though, as you'll only have a limited amount of time to complete all of the recipes!"
+		},
+		{
+			"TEXTURE": "normal_full.png",
+			"NAME": "[color=#4386c2]Akimi[/color]",
+			"DIALOGUE": "Okay, I think I understand..."
+		},
+		{
+			"TEXTURE": null,
+			"NAME": "[color=#24ccff]Miku[/color]",
+			"DIALOGUE": "Great! To start, head over to that cauldron on that ledge."
+		}
+	]
+}
