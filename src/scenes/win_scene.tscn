@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://3snb4odcvvbu"]
 
-[ext_resource type="Script" uid="uid://dtm8px2wq1ya4" path="res://scenes/win_scene.gd" id="1_aw8vk"]
+[ext_resource type="Script" uid="uid://dtm8px2wq1ya4" path="res://scripts/win_scene.gd" id="1_aw8vk"]
 [ext_resource type="PackedScene" uid="uid://n5t1t45l273n" path="res://scenes/data_manager.tscn" id="2_ecqtd"]
 
 [node name="WinScene" type="Control"]
