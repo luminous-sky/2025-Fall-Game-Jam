@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var SPEED: float = 80.0
 var can_move := true
 
+var use_transformed := false
+
 var previous_animation := "down"
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -24,11 +26,19 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = vertical * SPEED
 		
 		if vertical < 0:
-			animated_sprite_2d.play("up")
-			previous_animation = "up"
+			if use_transformed:
+				animated_sprite_2d.play("up_t")
+				previous_animation = "up_t"
+			else:
+				animated_sprite_2d.play("up")
+				previous_animation = "up"
 		else:
-			animated_sprite_2d.play("down")
-			previous_animation = "down"
+			if use_transformed:
+				animated_sprite_2d.play("down_t")
+				previous_animation = "down_t"
+			else:
+				animated_sprite_2d.play("down")
+				previous_animation = "down"
 	else:
 		velocity.y = 0
 	
@@ -37,11 +47,19 @@ func _physics_process(_delta: float) -> void:
 		velocity.x = horizontal * SPEED
 		
 		if horizontal < 0:
-			animated_sprite_2d.play("left")
-			previous_animation = "left"
+			if use_transformed:
+				animated_sprite_2d.play("left_t")
+				previous_animation = "left_t"
+			else:
+				animated_sprite_2d.play("left")
+				previous_animation = "left"
 		else:
-			animated_sprite_2d.play("right")
-			previous_animation = "right"
+			if use_transformed: 
+				animated_sprite_2d.play("right_t")
+				previous_animation = "right_t"
+			else:
+				animated_sprite_2d.play("right")
+				previous_animation = "right"
 	else:
 		velocity.x = 0
 	
@@ -62,3 +80,8 @@ func disable_movement() -> void:
 
 func enable_movement() -> void:
 	can_move = true
+
+
+func set_transformed(status: bool) -> void:
+	use_transformed = status
+	animated_sprite_2d.play("idle_down_t")

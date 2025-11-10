@@ -72,6 +72,8 @@ func _on_transition_screen_transition_ended(animation_name: StringName) -> void:
 func _on_transformation_scene_finished() -> void:
 	print("A")
 	
+	player.set_transformed(true)
+	
 	# Pause
 	await get_tree().create_timer(1.0).timeout
 	

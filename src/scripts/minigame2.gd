@@ -9,6 +9,7 @@ var lastPoint = 0
 @onready var spawn_points = $SpawnPoints.get_children()
 
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
+@onready var player: Player = $Player
 
 
 func _ready() -> void:
@@ -16,6 +17,8 @@ func _ready() -> void:
 	$SpawnTimer.wait_time = .3
 	$SpawnTimer.start()
 	$SpawnTimer.timeout.connect(_on_spawn_timer_timeout) # Replace with function body.
+	
+	player.set_transformed(true)
 
 
 func _on_spawn_timer_timeout():

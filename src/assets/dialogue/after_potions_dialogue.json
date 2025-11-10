@@ -1,7 +1,7 @@
 {
 	"contents": [
 		{
-			"TEXTURE": "normal_full.png",
+			"TEXTURE": "magical_full.png",
 			"NAME": "[color=#4386c2]Akimi[/color]",
 			"DIALOGUE": "Oh... wow! Huh? Am I a magical girl now?"
 		},
@@ -11,7 +11,7 @@
 			"DIALOGUE": "Congratulations! Now that you're a magical girl, you can make money by completing tasks with your magic! "
 		},
 		{
-			"TEXTURE": "normal_full.png",
+			"TEXTURE": "magical_full.png",
 			"NAME": "[color=#4386c2]Akimi[/color]",
 			"DIALOGUE": "So what should I do next?\nI'm a bit confused, since, you know...."
 		},
@@ -21,7 +21,7 @@
 			"DIALOGUE": "Of course. There'll be a star shower in the forest soon! They'll corrupt the forest with their impure energy if left alone. That would be dangerous."
 		},
 		{
-			"TEXTURE": "normal_full.png",
+			"TEXTURE": "magical_full.png",
 			"NAME": "[color=#4386c2]Akimi[/color]",
 			"DIALOGUE": "So what should I do?"
 		},

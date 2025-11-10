@@ -14,6 +14,8 @@ const CREDITS = preload("uid://bfu8dn6gbu2u1")
 
 # Play the introduction dialogue
 func _ready() -> void:
+	player.set_transformed(true)
+	
 	if not cutscene_dialogue:
 		return
 	
